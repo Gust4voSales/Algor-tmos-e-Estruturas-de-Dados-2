@@ -20,6 +20,9 @@ int main(int argc, char *argv[]) {
 		case 3: 
 			inorder(arvore);
 			break;
+		case 4: 
+			posorder(arvore);
+			break;
 		default:
 			;
 		}

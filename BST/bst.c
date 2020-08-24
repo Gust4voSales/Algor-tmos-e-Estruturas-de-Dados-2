@@ -42,6 +42,14 @@ void inorder(no *raiz) {
 	}
 }
 
+void posorder(no *raiz) {
+	if (raiz != NULL) {
+		posorder(raiz->esq);
+		posorder(raiz->dir);
+		printf("[%d]", raiz->chave);
+	}
+}
+
 
 
 
