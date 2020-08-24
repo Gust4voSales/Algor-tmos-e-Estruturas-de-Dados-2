@@ -12,13 +12,16 @@ int main(int argc, char *argv[]) {
                 int chave;
     		case 1: 
         		scanf("%d", &chave);                
-				arvore = inserir(arvore, chave);
-                break;
-			case 2:
-				preorder(arvore);				
-                break;
-			default:
-				;
+			arvore = inserir(arvore, chave);
+                	break;
+		case 2:
+			preorder(arvore);				
+                	break;
+		case 3: 
+			inorder(arvore);
+			break;
+		default:
+			;
 		}
 
 	} while(opcao != 99);

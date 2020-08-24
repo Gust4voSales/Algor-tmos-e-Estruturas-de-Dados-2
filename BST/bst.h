@@ -1,10 +1,12 @@
 #ifndef BST_H
 #define BST_H
+
 typedef struct no {
 	int chave;
 	struct no *esq;
 	struct no *dir;	
 } no;
+
 //Op 1
 no* inserir(no *raiz, int chave);
 //Op 2
@@ -24,7 +26,7 @@ int altura(no *raiz);
 //Op 9
 int quantidade_elementos(no *raiz);
 //Op 10
-int existe(no *raiz, chave); //Retornar 1(existe) ou 0(não existe)
+int existe(no *raiz, int chave); //Retornar 1(existe) ou 0(não existe)
 //Op 11
 no* predecessor(no *raiz);
 //Op 12

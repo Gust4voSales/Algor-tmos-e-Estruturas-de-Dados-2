@@ -33,3 +33,36 @@ void preorder(no *raiz) {
 		preorder(raiz->dir);
 	}
 }
+
+void inorder(no *raiz) {
+	if (raiz != NULL) {
+		inorder(raiz->esq);
+		printf("[%d]", raiz->chave);
+		inorder(raiz->dir);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
