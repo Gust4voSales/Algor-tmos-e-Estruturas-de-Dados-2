@@ -50,6 +50,40 @@ void posorder(no *raiz) {
 	}
 }
 
+no* remover(no *raiz, int chave) {
+	if (raiz == NULL) {
+		return raiz;
+	}
+
+	if (chave < raiz->chave) {
+		raiz->esq = remover(raiz->esq, chave);	
+	} else if (chave > raiz->chave) {
+		raiz->dir = remover(raiz->dir, chave);
+	}
+	// A raiz que é pra ser removida
+	else {
+		if (raiz->esq == NULL) {
+			no *temp = raiz->dir; 
+			free(raiz); 
+			return temp; 
+		} else if (raiz->dir == NULL) {
+			no *temp = raiz->esq; 
+			free(raiz); 
+			return temp; 		
+		}
+
+		// Raiz tem dois filhos
+		no *temp = raiz->esq; 
+		raiz->chave = temp->chave;
+
+		raiz->esq = remover(raiz->esq, temp->chave);
+	} 
+
+	return raiz;
+
+	
+}
+
 
 
 
