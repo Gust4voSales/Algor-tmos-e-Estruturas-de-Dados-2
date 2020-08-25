@@ -9,6 +9,7 @@ int main(int argc, char *argv[]) {
 	do {
 		scanf("%d", &opcao);
 		switch(opcao) {
+		no* resultado;
                 int chave;
     		case 1: 
         		scanf("%d", &chave);                
@@ -30,6 +31,14 @@ int main(int argc, char *argv[]) {
 			scanf("%d", &chave);  
 			remover(arvore, chave);
 			break;
+		case 6:
+			resultado = maior(arvore);
+			printf("%d ", resultado->chave);				
+                	break;
+		case 7:
+			resultado = menor(arvore);
+			printf("%d ", resultado->chave);				
+                	break;
 		default:
 			;
 		}

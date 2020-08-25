@@ -80,8 +80,26 @@ no* remover(no *raiz, int chave) {
 	} 
 
 	return raiz;
+}
 
+no* maior(no *raiz) {
+	no* noAtual = raiz;
 	
+	while(noAtual && noAtual->dir != NULL) {
+		noAtual = noAtual->dir;
+	}
+	
+	return noAtual;
+}
+
+no* menor(no *raiz) {
+	no* noAtual = raiz;
+	
+	while(noAtual && noAtual->esq != NULL) {
+		noAtual = noAtual->esq;
+	}
+	
+	return noAtual;
 }
 
 
