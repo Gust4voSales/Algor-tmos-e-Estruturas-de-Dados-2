@@ -102,6 +102,20 @@ no* menor(no *raiz) {
 	return noAtual;
 }
 
+int altura(no *raiz) {
+	if (raiz == NULL) {
+		return 0;
+	}
+	
+	int extensaoLadoDir = altura(raiz->dir);
+	int extensaoLadoEsq = altura(raiz->esq);
+	// Maior extensão será a altura da arvore
+	if (extensaoLadoDir > extensaoLadoEsq) {
+		return extensaoLadoDir + 1;
+	} 
+	return extensaoLadoEsq + 1;
+}
+
 
 
 
