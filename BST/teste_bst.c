@@ -44,6 +44,10 @@ int main(int argc, char *argv[]) {
 			resInt = altura(arvore);
 			printf("%d ", resInt);				
                 	break;
+		case 9:
+			resInt = quantidade_elementos(arvore);
+			printf("%d ", resInt);				
+                	break;
 		default:
 			;
 		}

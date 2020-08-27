@@ -117,6 +117,15 @@ int altura(no *raiz) {
 }
 
 
+int quantidade_elementos(no *raiz) {
+	if (raiz == NULL) {
+		return 0;
+	}		
+	
+	return quantidade_elementos(raiz->esq) + 
+		quantidade_elementos(raiz->dir) + 1;
+		
+}
 
 
 
