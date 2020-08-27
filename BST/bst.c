@@ -143,7 +143,35 @@ int existe(no *raiz, int chave) {
 	
 }
 
+no* predecessor(no *raiz) {
+	if (raiz == NULL) {
+		return NULL;
+	}
+	
+	if (raiz->esq != NULL) {
+		no * raizTemp = raiz->esq;
+		
+		while(raizTemp->dir != NULL) {
+			raizTemp = raizTemp->dir;			
+		}	
+		return raizTemp;	
+	}
+}
 
+no* sucessor(no *raiz) {
+	if (raiz == NULL) {
+		return NULL;
+	}
+	
+	if (raiz->dir != NULL) {
+		no * raizTemp = raiz->dir;
+		
+		while(raizTemp->esq != NULL) {
+			raizTemp = raizTemp->esq;			
+		}	
+		return raizTemp;	
+	}
+}
 
 
 

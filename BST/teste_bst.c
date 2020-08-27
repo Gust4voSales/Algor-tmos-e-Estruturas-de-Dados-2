@@ -53,6 +53,14 @@ int main(int argc, char *argv[]) {
 			resInt = existe(arvore, chave);
 			printf("%d ", resInt);				
                 	break;
+		case 11:
+			resNo = predecessor(arvore);
+			printf("%d ", resNo->chave);				
+                	break;
+		case 12:
+			resNo = sucessor(arvore);
+			printf("%d ", resNo->chave);				
+                	break;
 		default:
 			;
 		}
