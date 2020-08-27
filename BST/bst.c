@@ -127,6 +127,22 @@ int quantidade_elementos(no *raiz) {
 		
 }
 
+int existe(no *raiz, int chave) {
+	if (raiz == NULL) {
+		return 0;
+	} 
+
+	else if (chave == raiz->chave) {
+		return 1;
+	} 
+	else if (chave < raiz->chave) {
+		return existe(raiz->esq, chave);
+	} 
+		
+		return existe(raiz->dir, chave);
+	
+}
+
 
 
 

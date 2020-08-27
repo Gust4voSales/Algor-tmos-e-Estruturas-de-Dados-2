@@ -48,6 +48,11 @@ int main(int argc, char *argv[]) {
 			resInt = quantidade_elementos(arvore);
 			printf("%d ", resInt);				
                 	break;
+		case 10:
+			scanf("%d", &chave); 
+			resInt = existe(arvore, chave);
+			printf("%d ", resInt);				
+                	break;
 		default:
 			;
 		}
