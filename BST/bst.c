@@ -143,33 +143,63 @@ int existe(no *raiz, int chave) {
 	
 }
 
-no* predecessor(no *raiz) {
+no* predecessor(no *raiz, int chave) {
 	if (raiz == NULL) {
 		return NULL;
 	}
+
+	no *pre = NULL;
 	
-	if (raiz->esq != NULL) {
-		no * raizTemp = raiz->esq;
+	if (raiz->chave == chave) {		
+		if (raiz->esq != NULL) {
+			no * raizTemp = raiz->esq;
 		
-		while(raizTemp->dir != NULL) {
-			raizTemp = raizTemp->dir;			
-		}	
-		return raizTemp;	
+			while(raizTemp->dir != NULL) {
+				raizTemp = raizTemp->dir;			
+			}	
+			pre = raizTemp;	
+		}
+		return pre;
+	} 
+	else if (chave < raiz->chave) {
+		return predecessor(raiz->esq, chave);
+	} 
+	else {
+		pre = predecessor(raiz->dir, chave);
+		if( pre != NULL) {
+			return pre;
+		}
+		return raiz;
 	}
 }
 
-no* sucessor(no *raiz) {
+no* sucessor(no *raiz, int chave) {
 	if (raiz == NULL) {
 		return NULL;
 	}
+
+	no *suc = NULL;
 	
-	if (raiz->dir != NULL) {
-		no * raizTemp = raiz->dir;
+	if (raiz->chave == chave) {	
+		if (raiz->dir != NULL) {
+			no * raizTemp = raiz->dir;
 		
-		while(raizTemp->esq != NULL) {
-			raizTemp = raizTemp->esq;			
-		}	
-		return raizTemp;	
+			while(raizTemp->esq != NULL) {
+				raizTemp = raizTemp->esq;			
+			}	
+			suc = raizTemp;	
+		}
+		return suc;
+	}
+	else if (chave < raiz->chave) {
+		suc = sucessor(raiz->esq, chave);
+		if(suc != NULL) {
+			return suc;
+		}
+		return raiz;	
+	} 
+	else {
+		return sucessor(raiz->dir, chave);
 	}
 }
 

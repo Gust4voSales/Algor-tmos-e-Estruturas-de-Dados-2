@@ -49,16 +49,18 @@ int main(int argc, char *argv[]) {
 			printf("%d ", resInt);				
                 	break;
 		case 10:
-			scanf("%d", &chave); 
+			scanf("%d", &chave); 			
 			resInt = existe(arvore, chave);
 			printf("%d ", resInt);				
                 	break;
 		case 11:
-			resNo = predecessor(arvore);
+			scanf("%d", &chave);
+			resNo = predecessor(arvore, chave);
 			printf("%d ", resNo->chave);				
                 	break;
 		case 12:
-			resNo = sucessor(arvore);
+			scanf("%d", &chave);
+			resNo = sucessor(arvore, chave);
 			printf("%d ", resNo->chave);				
                 	break;
 		default:

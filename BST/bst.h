@@ -28,9 +28,9 @@ int quantidade_elementos(no *raiz);
 //Op 10
 int existe(no *raiz, int chave); //Retornar 1(existe) ou 0(não existe)
 //Op 11
-no* predecessor(no *raiz);
+no* predecessor(no *raiz, int chave);
 //Op 12
-no* sucessor(no *raiz);
+no* sucessor(no *raiz, int chave);
 
 
 
