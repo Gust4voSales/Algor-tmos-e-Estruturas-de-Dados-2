@@ -102,16 +102,25 @@ arvore rotacionar(arvore raiz) {
     //fb maior que zero => rotação esquerda
 	if(raiz->fb > 0) {
 		switch(raiz->dir->fb) {
-            //o zero "conta" como rotação simples. 
-            //Só ocorre no remover
+            	//o zero "conta" como rotação simples. 
+            	//Só ocorre no remover
 			case 0:
 			case 1:
 				return rotacao_simples_esquerda(raiz);
 			case -1:
 				return rotacao_dupla_esquerda(raiz);					
-			} 
+		} 
 	} else {
-    //implementar o simétrico
+    	//implementar o simétrico
+		switch(raiz->esq->fb) {
+            	//o zero "conta" como rotação simples. 
+            	//Só ocorre no remover
+			case 0:
+			case -1:
+				return rotacao_simples_direita(raiz);
+			case 1:
+				return rotacao_dupla_direita(raiz);					
+		} 
 	}
 }
 
@@ -192,17 +201,108 @@ arvore rotacao_simples_esquerda(arvore raiz) {
 }
 
 arvore rotacao_dupla_esquerda(arvore raiz) {
-	printf("rotacao dupla esquerda\n");
-	return raiz;
+	arvore p, u, v, t1, t2, t3, t4;
+	//inicializa os ponteiros	
+	p = raiz;
+	u = raiz->dir;
+	v = u->esq;
+	t2 = v->esq;
+	t3 = v->dir;
+	//t1 e t4 não estão sendo modificados. 
+	//só estão aqui por questões didáticas 
+	t1 = p->esq;
+	t4 = u->dir;
+
+	//Primeiro, rotação simples direita no u
+	p->dir = v;
+	v->dir = u;
+	u->esq = t3;
+	//Segundo, rotação simples esquerda no p
+	v->esq = p;
+	p->dir = t2;
+	
+	//Calculo de balanço
+	if(v->fb == 1) {
+		p->fb = -1;
+	} 
+	else {
+		p->fb = 0;
+	} 
+	if (v->fb == -1) {
+		u->fb = 1;
+	}
+	else {
+		u->fb = 0;
+	}
+	
+	v->fb = 0;
+	return v;
 }
 
 arvore rotacao_simples_direita(arvore raiz) {
-	printf("rotacao simples esquerda\n");
-	return raiz;
+	arvore p, u, t1, t2, t3;
+    	//inicializa os ponteiros
+	p = raiz;
+	u = raiz->esq;
+	t1 = p->dir;
+	//t2 e t3 não estão sendo modificados. 
+	//só estão aqui por questões didáticas
+	t2 = u->esq;
+	t3 = u->dir;
+
+    	//Atualiza os ponteiros
+	p->esq = t3;
+	u->dir = p;
+	
+	//Atualiza os fatores de balanço de acordo com o fb de u
+    	//Esses valores vieram dos cálculos demonstrados na aula
+	if(u->fb == -1) {
+		p->fb = 0;
+		u->fb = 0;
+	} else {
+		p->fb = -1;
+		u->fb = 1;
+	}	
+
+	return u;
 }
 arvore rotacao_dupla_direita(arvore raiz) {
-	printf("rotacao dupla direita\n");
-	return raiz;
+	arvore p, u, v, t1, t2, t3, t4;
+	//inicializa os ponteiros	
+	p = raiz;
+	u = raiz->esq;
+	v = u->dir;
+	t2 = v->esq;
+	t3 = v->dir;
+	//t1 e t4 não estão sendo modificados. 
+	//só estão aqui por questões didáticas 
+	t1 = u->esq;
+	t4 = p->dir;
+
+	//Primeiro, rotação simples esquerda no u
+	p->esq = v;
+	v->esq = u;
+	u->dir = t2;
+	//Segundo, rotação simples direita no p
+	v->dir = p;
+	p->esq = t3;
+	
+	//Calculo de balanço
+	if(v->fb == -1) {
+		p->fb = 1;
+	} 
+	else {
+		p->fb = 0;
+	} 
+	if (v->fb == 1) {
+		u->fb = -1;
+	}
+	else {
+		u->fb = 0;
+	}
+	
+	v->fb = 0;
+	return v;
 }
 
 
