@@ -124,30 +124,80 @@ arvore rotacionar(arvore raiz) {
 	}
 }
 
-/*----------
-Só está implementada a "base" do remover da BST.
-Incluir a variável de controle "diminuir" similar a "cresceu do adicionar.
-------*/
-arvore remover (int valor, arvore raiz) {
+arvore remover (int valor, arvore raiz, int *diminuiu) {
 	if(raiz == NULL) 
 		return NULL;
 	
-	if(raiz->dado == valor) {		
-		if(raiz->esq == NULL) {
+	if(raiz->dado == valor) {
+		*diminuiu = 1;		
+		
+		if(raiz->esq == NULL) {				
 			return raiz->dir;
 		}
 		if(raiz->dir == NULL) {
 			return raiz->esq;
 		}
+
 		raiz->dado = maior_elemento(raiz->esq);
-		raiz->esq = remover(raiz->dado, raiz->esq);
+		raiz->esq = remover(raiz->dado, raiz->esq, diminuiu);
+		
+		if (*diminuiu) {
+			int h_esq, h_dir;
+			h_esq = altura(raiz->esq);
+			h_dir = altura(raiz->dir);
+			if (h_dir-h_esq == 0) {
+				raiz->fb = 0;
+			} else if (h_dir-h_esq == 2){
+				raiz = rotacionar(raiz);				
+			} else {
+				raiz->fb = 1;
+			}
+			
+		}	
+		*diminuiu = 0;		
 		return raiz;
 	}	
 	if(valor > raiz->dado) {
-			raiz->dir = remover(valor, raiz->dir);
+		raiz->dir = remover(valor, raiz->dir, diminuiu);
+
+		if (*diminuiu) {
+			switch(raiz->fb) {
+				case 0:
+					raiz->fb = -1;
+		            		*diminuiu = 0;
+					break;
+			    	case -1:
+					*diminuiu = 1;
+		            		//o fator de balanço passaria ao valor -2,
+					return rotacionar(raiz);
+			   	case 1:
+					raiz->fb = 0;
+					//*diminuiu = 0;
+					break;
+			}
+		}			
 	} else {
-			raiz->esq = remover(valor, raiz->esq);
+		raiz->esq = remover(valor, raiz->esq, diminuiu);
+
+		if (*diminuiu) {
+			switch(raiz->fb) {
+				case 0:
+					raiz->fb = 1;
+		            		*diminuiu = 0;
+					break;
+			    	case -1:
+					raiz->fb = 0;
+					//*diminuiu = 0;
+					break;
+					
+			   	case 1:
+					*diminuiu = 1;
+		            		//o fator de balanço passaria ao valor -2,
+					return rotacionar(raiz);
+			}
+		}	
 	}
+	
 	return raiz;
 
 }
