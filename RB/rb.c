@@ -94,12 +94,16 @@ void ajustar(arvore *raiz, arvore elemento){
 				continue;
 			}
 			//caso 3a: rotação dupla direita
-			if(0) {
-					continue;
+			if(!eh_filho_esquerdo(elemento) && eh_filho_esquerdo(elemento->pai)) {
+				rotacao_simples_esquerda(raiz, elemento->pai);
+				rotacao_simples_direita(raiz, elemento->pai);
+				continue;
 			}
 			//caso 3b: rotação dupla esquerda
-			if(0) {
-					continue;
+			if(eh_filho_esquerdo(elemento) && !eh_filho_esquerdo(elemento->pai)) {
+				rotacao_simples_direita(raiz, elemento->pai);				
+				rotacao_simples_esquerda(raiz, elemento->pai);
+				continue;
 			}
 
 	}
@@ -123,17 +127,18 @@ cor(u) = Preto
 cor(v) = cor(p) = Vermelho
 */
 void rotacao_simples_direita(arvore *raiz, arvore pivo){
-	arvore u, t1;
-	u = pivo->dir;
-	t1 = u->esq;
+	arvore u, t1, v;
+	u = pivo->esq;
+	t1 = u->dir;
+	v = u->esq;
 
             /*Para fazer a ligação da raiz da sub-árvore resultante com o seu pai, é preciso saber se o pivo p era um filho esquerdo ou direito*/
 	int posicao_pivo_esq = eh_filho_esquerdo(pivo);
 	
 	//Atualização dos ponteiros
-	pivo->esq = u->dir;
-    	if(u->dir != NULL)
-		u->dir->pai = pivo;
+	pivo->esq = t1;
+    	if(t1!= NULL)
+		t1->pai = pivo;
 
 	u->dir = pivo;
 
@@ -158,17 +163,18 @@ void rotacao_simples_direita(arvore *raiz, arvore pivo){
 }
 
 void rotacao_simples_esquerda(arvore *raiz, arvore pivo) {
-	arvore u, t1;
+	arvore u, t1, v;
 	u = pivo->dir;
-	t1 = u->dir;
+	t1 = u->esq;
+	v = u->dir;
 
             /*Para fazer a ligação da raiz da sub-árvore resultante com o seu pai, é preciso saber se o pivo p era um filho esquerdo ou direito*/
 	int posicao_pivo_esq = eh_filho_esquerdo(pivo);
 	
 	//Atualização dos ponteiros
-	pivo->dir = u->esq;
-    	if(u->esq != NULL)
-		u->esq->pai = pivo;
+	pivo->dir = t1;
+    	if(t1 != NULL)
+		t1->pai = pivo;
 
 	u->esq = pivo;
 
