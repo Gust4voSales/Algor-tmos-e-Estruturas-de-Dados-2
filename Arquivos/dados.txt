@@ -1,1 +1,1 @@
-Harry Potter|Rowling|1997|1|Lord of The ring|Tolkien|1960|2|Percy|Riordan|2001|3|Sapiens|Harari|2010|5|Magicas|Houdini|1920|7|
+Harry potter|Rowling|1997|3|Percy Jackson |Riordan|1999|5|Sapiens|Harari|2010|7|Senhor dos Aneis|Tolkien|1960|1|Magicas|Houdini|1930|8|Automatize Python|Stewgawrt|2005|9|

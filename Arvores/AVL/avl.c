@@ -233,7 +233,7 @@ arvore rotacao_simples_esquerda(arvore raiz) {
 	t3 = u->dir;
 
     //Atualiza os ponteiros
-	p->dir = t1;
+	p->dir = t2;
 	u->esq = p;
     
     //Atualiza os fatores de balanço de acordo com o fb de u
