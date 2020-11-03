@@ -10,7 +10,7 @@
 #### 🚧 Testing
   1. Run the executable passing an input file (teste.in) and redirect the result to an output file (resultado.out) with 
   ```./resultado < teste.in > resultado.out```
-  2. Compare the output file to a template file with the expected result to the input file used before,  run ```diff teste_esperado.out resultado.out```
+  2. Compare the output file to a template file (teste_esperado.out) which contaims the expected result to the input file used before,  run ```diff teste_esperado.out resultado.out```
   
 ## 🧩 Graphs 
 - [x] Kruskal's Algorithm (implemented with Adjacency Matrix representation)
