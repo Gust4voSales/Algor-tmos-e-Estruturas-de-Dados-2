@@ -1,3 +1,5 @@
+[README em Português](https://github.com/Gust4voSales/Algorithms-and-Data-Structures-2/blob/master/README-pt.md)
+
 ## 🌴 Binary Trees 
 - [x] Binary Search Tree 
 - [x]  AVL Tree
